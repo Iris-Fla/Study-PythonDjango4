@@ -9,13 +9,12 @@
       rel="stylesheet"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" type="text/css" href="{% static "hello/css/style.css"
-    %}" />
+    <link rel="stylesheet" type="text/css" href="{% static "hello/css/style.css" %}" />
   </head>
   <html>
     <body class="container">
       <h1 class="text-primary">Hello Django index page</h1>
-      <p class="h4">{{ message|safe }}</p>
+      <p class="h4">{{ result|safe }}</p>
       <form action="{% url 'index' %}" method="post">
         {% csrf_token %}
           {{ form.as_p }}

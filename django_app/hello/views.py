@@ -1,14 +1,23 @@
 from django.shortcuts import render
-from .forms import HelloForm
+from .forms import HelloForm, SessionForm
+from django.http import HttpRequest
+from django.views.generic import TemplateView
 
 # Create your views here.
-def index(request):
-    params = {
-        "title":"Hello",
-        "message":"your data:",
-        "form":HelloForm()
-    }
-    if (request.method == "POST"):
-        params["message"] = "名前:" + request.POST["name"] + "<br>メール:" + request.POST["mail"] + "<br>年齢:" + request.POST["age"]
-        params["form"] = HelloForm(request.POST)
-    return render(request,"hello/index.html",params)
+class HelloView(TemplateView):
+    def __init__(self):
+        self.params = {
+            'title': 'Hello',
+            'result': None,
+            'form': SessionForm()
+        }
+    def get(self, request):
+        self.params["result"] = request.session.get('last_msg', 'no message.')
+        return render(request, 'hello/index.html', self.params)
+    def post(self, request):
+        ses = request.POST['session']
+        self.params['result'] = 'you: "' + ses + '".'
+        request.session['last_msg'] = ses
+        self.params['form'] = SessionForm(request.POST)
+        return render(request, 'hello/index.html', self.params)
+        
