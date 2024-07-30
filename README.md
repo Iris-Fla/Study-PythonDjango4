@@ -13,15 +13,3 @@
 2. venv\Scripts\Activate.ps1
 3. python -m pip install -r requirements.txt
 4. python ./django_app/manage.py runserver
-
-## 一章まとめ
-- Djangoのインストール
-- ローカルサーバーの立て方
-
-## 二章まとめ
-- templatesの利用
-> 1.settings.pyの編集
-> 2.templatesフォルダの作成,フォルダの中にHelloフォルダを作成
-> 3.index.htmlの作成,urlpatternsを修正する
-- staticの利用
-> staticでCSSやIMGを保管する
