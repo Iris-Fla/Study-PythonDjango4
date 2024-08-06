@@ -1,6 +1,6 @@
-from django import urls
-from . import views
+from django.urls import path
+from .views import Helloview
 
 urlpatterns = [
-    urls.path('', views.index, name='index'),
+    path('', Helloview.as_view() ,name='index'),
 ]
