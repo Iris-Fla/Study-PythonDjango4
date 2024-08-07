@@ -1,10 +1,29 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"/>
 <body class = "container">
-    <h1> {{ title }} </h1>
-    <p>a {{ result|safe }} b</p>
-    <form action ="{% url "index" %}" method="post">
+    <form action="{% url 'index' %}" method="post">
         {% csrf_token %}
         {{ form }}
         <input type="submit" value="click">
     </form>
+    <table class="table">
+        <tr>
+            <th>id</th>
+            <th>name</th>
+            <th>gender</th>
+            <th>mail</th>
+            <th>age</th>
+            <th>birthday</th>
+        </tr>
+    {% for item in data %}
+        <tr>
+            <td>{{ item.id }}</td>
+            <td>{{ item.name }}</td>
+            <td>{% if item.gender == False %}male{% endif %}
+                {% if item.gender == True %}female{% endif %}</td>
+            <td>{{ item.mail }}</td>
+            <td>{{ item.age }}</td>
+            <td>{{ item.birthday }}</td>
+        </tr>
+    {% endfor %}
+    </table>
 </body>
