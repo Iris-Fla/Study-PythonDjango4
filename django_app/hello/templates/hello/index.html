@@ -1,29 +1,17 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"/>
 <body class = "container">
-    <form action="{% url 'index' %}" method="post">
-        {% csrf_token %}
-        {{ form }}
-        <input type="submit" value="click">
-    </form>
+    <h1 class="display-4 text-primary">{{ title }}</h1>
     <table class="table">
         <tr>
-            <th>id</th>
-            <th>name</th>
-            <th>gender</th>
-            <th>mail</th>
-            <th>age</th>
-            <th>birthday</th>
+            <th>data</th>
         </tr>
+    </table>
     {% for item in data %}
-        <tr>
-            <td>{{ item.id }}</td>
-            <td>{{ item.name }}</td>
-            <td>{% if item.gender == False %}male{% endif %}
-                {% if item.gender == True %}female{% endif %}</td>
-            <td>{{ item.mail }}</td>
-            <td>{{ item.age }}</td>
-            <td>{{ item.birthday }}</td>
-        </tr>
+    <tr>
+        <td>{{ item }}</td>
+        <td><a href="{% url 'edit' item.id %}">edit</a></td>
+        <td><a href="{% url 'delete' item.id %}">delete</a></td>
+    </tr>
     {% endfor %}
     </table>
 </body>
