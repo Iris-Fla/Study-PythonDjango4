@@ -1,0 +1,30 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8">
+        <title>{{ title }}</title>
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+    </head>
+    <body class="container">
+        <h1 class="display-4 text-primary">{{ title }}</h1>
+        <table class="table">
+            <tr>
+                <th>ID</th>
+                <th>名前</th>
+                <th>性別</th>
+                <th>メールアドレス</th>
+                <th>年齢</th>
+                <th>誕生日</th>
+                <th></th>
+            </tr>
+            {% for obj in object_list %}
+            <tr>
+                <td>{{ obj.id }}</td>
+                <td>{{ obj.name }}</td>
+                <td><a href="/hello/detail/{{ obj.id }}">detail</a></td>
+            </tr>
+            {% endfor %}
+        </table>
+    </body>
+</html>

@@ -12,41 +12,27 @@
   </head>
   <body class="container">
     <h1 class="display-4 text-primary">{{ title }}</h1>
-    <p>以下のデータを削除しますか？</p>
     <table class="table">
       <tr>
         <th>ID</th>
-        <td>{{ obj.id }}</td>
+        <td>{{ object.id }}</td>
       </tr>
       <tr>
         <th>名前</th>
         <td>{{ obj.name }}</td>
       </tr>
       <tr>
-        <th>性別</th>
-        <td>{% if obj.gender == False %}male{% else %}Female{% endif %}</td>
+        <th>mail</th>
+        <td>{{ object.mail }}</td>
       </tr>
       <tr>
-        <th>メールアドレス</th>
-        <td>{{ obj.email }}</td>
+        <th>gender</th>
+        <td>{{ obj.gender }}</td>
       </tr>
       <tr>
-        <th>年齢</th>
+        <th>age</th>
         <td>{{ obj.age }}</td>
       </tr>
-      <tr>
-        <th>誕生日</th>
-        <td>{{ obj.birthday }}</td>
-      </tr>
-      <form action="{% url 'delete' id %}" method="post">
-        {% csrf_token %}
-        <tr>
-          <th></th>
-          <td>
-            <input type="submit" value="click" class="btn btn-danger" />
-          </td>
-        </tr>
-      </form>
     </table>
   </body>
 </html>
